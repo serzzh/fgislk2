@@ -6,7 +6,14 @@
         <instance id="contractItemDc"
                   class="com.company.fgislk.entity.ContractItem">
             <fetchPlan extends="_base">
-                <property name="usageDocs" fetchPlan="_base"/>
+                <property name="usageDocs" fetchPlan="_base">
+                    <property name="warehouse" fetchPlan="_base">
+                        <property name="owner" fetchPlan="_base"/>
+                        <property name="region" fetchPlan="_base"/>
+                    </property>
+                    <property name="contractItem" fetchPlan="_base"/>
+                    <property name="measureUnit" fetchPlan="_base"/>
+                </property>
                 <property name="forestArea" fetchPlan="_base">
                     <property name="region" fetchPlan="_base"/>
                     <property name="type" fetchPlan="_base"/>
@@ -17,6 +24,7 @@
                     <property name="oiv" fetchPlan="_base"/>
                     <property name="businessPartner" fetchPlan="_base"/>
                 </property>
+                <property name="measureUnit" fetchPlan="_base"/>
             </fetchPlan>
             <loader/>
             <collection id="usageDocsDc" property="usageDocs"/>
@@ -40,6 +48,7 @@
     <layout spacing="true" expand="editActions">
         <form id="form" dataContainer="contractItemDc">
             <column width="350px">
+                <textField id="extNumField" property="extNum"/>
                 <entityPicker id="forestAreaField" property="forestArea">
                     <actions>
                         <action id="entityLookup" type="entity_lookup"/>
@@ -53,8 +62,13 @@
                     </actions>
                 </entityPicker>
                 <textField id="limitField" property="limit"/>
-                <textField id="measureUnitField" property="measureUnit"/>
                 <entityPicker id="contractHeadField" property="contractHead">
+                    <actions>
+                        <action id="entityLookup" type="entity_lookup"/>
+                        <action id="entityClear" type="entity_clear"/>
+                    </actions>
+                </entityPicker>
+                <entityPicker id="measureUnitField" property="measureUnit">
                     <actions>
                         <action id="entityLookup" type="entity_lookup"/>
                         <action id="entityClear" type="entity_clear"/>
@@ -70,8 +84,10 @@
                     <action id="remove" type="remove"/>
                 </actions>
                 <columns>
-                    <column id="id"/>
+                    <column id="docNum"/>
                     <column id="quantity"/>
+                    <column id="warehouse"/>
+                    <column id="contractItem"/>
                     <column id="measureUnit"/>
                 </columns>
                 <buttonsPanel>

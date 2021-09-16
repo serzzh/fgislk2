@@ -12,10 +12,17 @@
                     <property name="region" fetchPlan="_base"/>
                 </property>
                 <property name="contractItem" fetchPlan="_base">
+                    <property name="usageDocs" fetchPlan="_base">
+                        <property name="warehouse" fetchPlan="_base"/>
+                        <property name="contractItem" fetchPlan="_base"/>
+                        <property name="measureUnit" fetchPlan="_base"/>
+                    </property>
                     <property name="forestArea" fetchPlan="_base"/>
                     <property name="woodSort" fetchPlan="_base"/>
                     <property name="contractHead" fetchPlan="_base"/>
+                    <property name="measureUnit" fetchPlan="_base"/>
                 </property>
+                <property name="measureUnit" fetchPlan="_base"/>
             </fetchPlan>
             <loader id="usageDocsDl">
                 <query>
@@ -54,6 +61,7 @@
                 <action id="remove" type="remove"/>
             </actions>
             <columns>
+                <column id="docNum"/>
                 <column id="warehouse"/>
                 <column id="contractItem"/>
                 <column id="quantity"/>

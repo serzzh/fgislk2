@@ -7,7 +7,14 @@
         <collection id="contractItemsDc"
                     class="com.company.fgislk.entity.ContractItem">
             <fetchPlan extends="_base">
-                <property name="usageDocs" fetchPlan="_base"/>
+                <property name="usageDocs" fetchPlan="_base">
+                    <property name="warehouse" fetchPlan="_base">
+                        <property name="owner" fetchPlan="_base"/>
+                        <property name="region" fetchPlan="_base"/>
+                    </property>
+                    <property name="contractItem" fetchPlan="_base"/>
+                    <property name="measureUnit" fetchPlan="_base"/>
+                </property>
                 <property name="forestArea" fetchPlan="_base">
                     <property name="region" fetchPlan="_base"/>
                     <property name="type" fetchPlan="_base"/>
@@ -18,6 +25,7 @@
                     <property name="oiv" fetchPlan="_base"/>
                     <property name="businessPartner" fetchPlan="_base"/>
                 </property>
+                <property name="measureUnit" fetchPlan="_base"/>
             </fetchPlan>
             <loader id="contractItemsDl">
                 <query>
@@ -56,11 +64,12 @@
                 <action id="remove" type="remove"/>
             </actions>
             <columns>
+                <column id="extNum"/>
                 <column id="forestArea"/>
                 <column id="woodSort"/>
                 <column id="limit"/>
-                <column id="measureUnit"/>
                 <column id="contractHead"/>
+                <column id="measureUnit"/>
             </columns>
             <simplePagination/>
             <buttonsPanel id="buttonsPanel"

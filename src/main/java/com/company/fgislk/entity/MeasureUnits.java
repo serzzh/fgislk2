@@ -1,6 +1,7 @@
 package com.company.fgislk.entity;
 
 import io.jmix.core.entity.annotation.JmixGeneratedValue;
+import io.jmix.core.metamodel.annotation.InstanceName;
 import io.jmix.core.metamodel.annotation.JmixEntity;
 
 import javax.persistence.Column;
@@ -19,6 +20,7 @@ public class MeasureUnits {
     @Id
     private UUID id;
 
+    @InstanceName
     @Column(name = "CODE", nullable = false, length = 5)
     @NotNull
     private String code;

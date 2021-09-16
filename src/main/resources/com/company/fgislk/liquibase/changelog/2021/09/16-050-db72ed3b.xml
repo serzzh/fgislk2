@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1" author="fgislk">
+        <addColumn tableName="USAGE_DOC">
+            <column name="DOC_NUM" type="INT"/>
+        </addColumn>
+
+        <addNotNullConstraint columnName="DOC_NUM" defaultNullValue="0" tableName="USAGE_DOC"/>
+    </changeSet>
+    <changeSet id="2" author="fgislk">
+        <dropColumn columnName="EXT_NUM" tableName="ContractItem"/>
+    </changeSet>
+    <changeSet id="3" author="fgislk">
+        <addColumn tableName="ContractItem">
+            <column name="EXT_NUM" type="INT">
+                <constraints nullable="false" validateNullable="true"/>
+            </column>
+        </addColumn>
+    </changeSet>
+</databaseChangeLog>

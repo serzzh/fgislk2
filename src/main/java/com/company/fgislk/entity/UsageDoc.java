@@ -12,11 +12,15 @@ import java.util.UUID;
 @Table(name = "USAGE_DOC")
 @Entity
 public class UsageDoc {
-    @InstanceName
     @JmixGeneratedValue
     @Column(name = "ID", nullable = false)
     @Id
     private UUID id;
+
+    @InstanceName
+    @Column(name = "DOC_NUM", nullable = false)
+    @NotNull
+    private Integer docNum;
 
     @JoinColumn(name = "WAREHOUSE_ID")
     @ManyToOne(fetch = FetchType.LAZY)
@@ -34,6 +38,14 @@ public class UsageDoc {
     @JoinColumn(name = "MEASURE_UNIT_ID", nullable = false)
     @OneToOne(optional = false)
     private MeasureUnits measureUnit;
+
+    public Integer getDocNum() {
+        return docNum;
+    }
+
+    public void setDocNum(Integer docNum) {
+        this.docNum = docNum;
+    }
 
     public void setMeasureUnit(MeasureUnits measureUnit) {
         this.measureUnit = measureUnit;

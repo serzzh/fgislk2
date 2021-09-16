@@ -14,11 +14,15 @@ import java.util.UUID;
 @Table(name = "ContractItem")
 @Entity
 public class ContractItem {
-    @InstanceName
     @JmixGeneratedValue
     @Column(name = "ID", nullable = false)
     @Id
     private UUID id;
+
+    @InstanceName
+    @NotNull
+    @Column(name = "EXT_NUM", nullable = false)
+    private Integer extNum;
 
     @Composition
     @OneToMany(mappedBy = "contractItem")
@@ -46,6 +50,14 @@ public class ContractItem {
     @JoinColumn(name = "MEASURE_UNIT_ID", nullable = false)
     @OneToOne(optional = false)
     private MeasureUnits measureUnit;
+
+    public void setExtNum(Integer extNum) {
+        this.extNum = extNum;
+    }
+
+    public Integer getExtNum() {
+        return extNum;
+    }
 
     public void setMeasureUnit(MeasureUnits measureUnit) {
         this.measureUnit = measureUnit;
