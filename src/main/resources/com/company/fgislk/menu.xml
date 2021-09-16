@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<menu-config xmlns="http://jmix.io/schema/ui/menu">
+
+    <menu id="application" caption="msg://com.company.fgislk/menu.application" insertBefore="administration">
+        <item screen="User.browse" caption="msg://com.company.fgislk.screen.user/UserBrowse.caption"/>
+        <item screen="themeSettingsScreen" caption="msg://io.jmix.ui.app.themesettings/themeSettings.caption"/>
+        <item screen="ForestArea.browse" caption="msg://com.company.fgislk.screen.forestarea/forestAreaBrowse.menu"/>
+        <item screen="ForestAreaTypes.browse"
+              caption="msg://com.company.fgislk.screen.forestareatypes/forestAreaTypesBrowse.menu"/>
+        <item screen="OIV.browse" caption="msg://com.company.fgislk.screen.oiv/OIVBrowse.menu"/>
+        <item screen="Region.browse" caption="msg://com.company.fgislk.screen.region/regionBrowse.menu"/>
+        <item screen="WoodSort.browse" caption="msg://com.company.fgislk.screen.woodsort/woodSortBrowse.menu"/>
+        <item screen="BusinessPartner.browse"
+              caption="msg://com.company.fgislk.screen.businesspartner/businessPartnerBrowse.menu"/>
+        <item screen="ContractHead.browse"
+              caption="msg://com.company.fgislk.screen.contracthead/contractHeadBrowse.menu"/>
+        <item screen="UsageDoc.browse" caption="msg://com.company.fgislk.screen.usagedoc/usageDocBrowse.menu"/>
+        <item screen="ContractItem.browse"
+              caption="msg://com.company.fgislk.screen.contractitem/contractItemBrowse.menu"/>
+        <item screen="Locations.browse" caption="msg://com.company.fgislk.screen.locations/locationsBrowse.menu"/>
+        <item screen="MeasureUnits.browse"
+              caption="msg://com.company.fgislk.screen.measureunits/measureUnitsBrowse.menu"/>
+    </menu>
+
+</menu-config>

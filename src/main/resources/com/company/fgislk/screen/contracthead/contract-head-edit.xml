@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        caption="msg://contractHeadEdit.caption"
+        focusComponent="form">
+    <data>
+        <instance id="contractHeadDc"
+                  class="com.company.fgislk.entity.ContractHead">
+            <fetchPlan extends="_base">
+                <property name="contractItems" fetchPlan="_base">
+                    <property name="forestArea" fetchPlan="_base">
+                        <property name="region" fetchPlan="_base"/>
+                        <property name="type" fetchPlan="_base"/>
+                        <property name="upperArea" fetchPlan="_base">
+                            <property name="region" fetchPlan="_base"/>
+                            <property name="type" fetchPlan="_base"/>
+                        </property>
+                    </property>
+                    <property name="woodSort" fetchPlan="_base"/>
+                </property>
+                <property name="oiv" fetchPlan="_base"/>
+                <property name="businessPartner" fetchPlan="_base"/>
+            </fetchPlan>
+            <loader/>
+            <collection id="contractItemsDc" property="contractItems"/>
+        </instance>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="windowCommitAndClose" caption="msg:///actions.Ok"
+                icon="EDITOR_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="windowClose"
+                caption="msg:///actions.Close"
+                icon="EDITOR_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout spacing="true" expand="editActions">
+        <form id="form" dataContainer="contractHeadDc">
+            <column width="350px">
+                <textField id="contract_numberField" property="contract_number"/>
+                <textField id="contract_nameField" property="contract_name"/>
+                <entityPicker id="oivField" property="oiv">
+                    <actions>
+                        <action id="entityLookup" type="entity_lookup"/>
+                        <action id="entityClear" type="entity_clear"/>
+                    </actions>
+                </entityPicker>
+                <entityPicker id="businessPartnerField" property="businessPartner">
+                    <actions>
+                        <action id="entityLookup" type="entity_lookup"/>
+                        <action id="entityClear" type="entity_clear"/>
+                    </actions>
+                </entityPicker>
+                <dateField id="contract_dateField" property="contract_date"/>
+            </column>
+        </form>
+        <groupBox id="contractItemsBox" caption="msg://com.company.fgislk.entity/ContractHead.contractItems">
+            <table id="contractItemsTable" dataContainer="contractItemsDc" width="100%" height="200px">
+                <actions>
+                    <action id="create" type="create"/>
+                    <action id="edit" type="edit"/>
+                    <action id="remove" type="remove"/>
+                </actions>
+                <columns>
+                    <column id="id"/>
+                    <column id="limit"/>
+                    <column id="measureUnit"/>
+                    <column id="forestArea"/>
+                    <column id="woodSort"/>
+                </columns>
+                <buttonsPanel>
+                    <button action="contractItemsTable.create"/>
+                    <button action="contractItemsTable.edit"/>
+                    <button action="contractItemsTable.remove"/>
+                </buttonsPanel>
+            </table>
+        </groupBox>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

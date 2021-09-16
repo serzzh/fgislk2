@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        caption="msg://contractItemEdit.caption"
+        focusComponent="form">
+    <data>
+        <instance id="contractItemDc"
+                  class="com.company.fgislk.entity.ContractItem">
+            <fetchPlan extends="_base">
+                <property name="usageDocs" fetchPlan="_base"/>
+                <property name="forestArea" fetchPlan="_base">
+                    <property name="region" fetchPlan="_base"/>
+                    <property name="type" fetchPlan="_base"/>
+                    <property name="upperArea" fetchPlan="_base"/>
+                </property>
+                <property name="woodSort" fetchPlan="_base"/>
+                <property name="contractHead" fetchPlan="_base">
+                    <property name="oiv" fetchPlan="_base"/>
+                    <property name="businessPartner" fetchPlan="_base"/>
+                </property>
+            </fetchPlan>
+            <loader/>
+            <collection id="usageDocsDc" property="usageDocs"/>
+        </instance>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="windowCommitAndClose" caption="msg:///actions.Ok"
+                icon="EDITOR_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="windowClose"
+                caption="msg:///actions.Close"
+                icon="EDITOR_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout spacing="true" expand="editActions">
+        <form id="form" dataContainer="contractItemDc">
+            <column width="350px">
+                <entityPicker id="forestAreaField" property="forestArea">
+                    <actions>
+                        <action id="entityLookup" type="entity_lookup"/>
+                        <action id="entityClear" type="entity_clear"/>
+                    </actions>
+                </entityPicker>
+                <entityPicker id="woodSortField" property="woodSort">
+                    <actions>
+                        <action id="entityLookup" type="entity_lookup"/>
+                        <action id="entityClear" type="entity_clear"/>
+                    </actions>
+                </entityPicker>
+                <textField id="limitField" property="limit"/>
+                <textField id="measureUnitField" property="measureUnit"/>
+                <entityPicker id="contractHeadField" property="contractHead">
+                    <actions>
+                        <action id="entityLookup" type="entity_lookup"/>
+                        <action id="entityClear" type="entity_clear"/>
+                    </actions>
+                </entityPicker>
+            </column>
+        </form>
+        <groupBox id="usageDocsBox" caption="msg://com.company.fgislk.entity/ContractItem.usageDocs">
+            <table id="usageDocsTable" dataContainer="usageDocsDc" width="100%" height="200px">
+                <actions>
+                    <action id="create" type="create"/>
+                    <action id="edit" type="edit"/>
+                    <action id="remove" type="remove"/>
+                </actions>
+                <columns>
+                    <column id="id"/>
+                    <column id="quantity"/>
+                    <column id="measureUnit"/>
+                </columns>
+                <buttonsPanel>
+                    <button action="usageDocsTable.create"/>
+                    <button action="usageDocsTable.edit"/>
+                    <button action="usageDocsTable.remove"/>
+                </buttonsPanel>
+            </table>
+        </groupBox>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

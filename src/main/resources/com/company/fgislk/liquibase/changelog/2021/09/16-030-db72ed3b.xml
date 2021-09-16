@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1" author="fgislk">
+        <addColumn tableName="ContractItem">
+            <column name="MEASURE_UNIT_ID" type="UUID"/>
+        </addColumn>
+
+        <addNotNullConstraint columnName="MEASURE_UNIT_ID" tableName="ContractItem"/>
+    </changeSet>
+    <changeSet id="2" author="fgislk">
+        <addColumn tableName="USAGE_DOC">
+            <column name="MEASURE_UNIT_ID" type="UUID"/>
+        </addColumn>
+
+        <addNotNullConstraint columnName="MEASURE_UNIT_ID" tableName="USAGE_DOC"/>
+    </changeSet>
+    <changeSet id="3" author="fgislk">
+        <addForeignKeyConstraint baseColumnNames="MEASURE_UNIT_ID" baseTableName="ContractItem"
+                                 constraintName="FK_CONTRACTITEM_ON_MEASUREUNIT" referencedColumnNames="ID"
+                                 referencedTableName="MEASURE_UNITS"/>
+    </changeSet>
+    <changeSet id="4" author="fgislk">
+        <addForeignKeyConstraint baseColumnNames="MEASURE_UNIT_ID" baseTableName="USAGE_DOC"
+                                 constraintName="FK_USAGE_DOC_ON_MEASURE_UNIT" referencedColumnNames="ID"
+                                 referencedTableName="MEASURE_UNITS"/>
+    </changeSet>
+</databaseChangeLog>
